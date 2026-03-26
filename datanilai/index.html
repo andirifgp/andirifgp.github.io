@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabel Data Terkoneksi</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <style>
+        body { font-family: sans-serif; padding: 30px; background: #f4f4f4; }
+        .container { background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Data Otomatis dari Google Sheets</h2>
+    <table id="tabelData" class="display" style="width:100%">
+        <thead><tr id="headerRow"></tr></thead>
+        <tbody id="bodyData"></tbody>
+    </table>
+</div>
+
+<script>
+    // GANTI DENGAN URL WEB APP DARI APPS SCRIPT TADI
+    const webAppUrl = "https://script.google.com/macros/s/AKfycbxo5X2d5jPZB9tbUnTzWVQPh9x0NiU3UZBirswPOoj2PfaJZZ1JBc0MPkweKMT-L-ZO/exec";
+
+    async function loadData() {
+        try {
+            const response = await fetch(webAppUrl);
+            const data = await response.json();
+
+            if (data.length > 0) {
+                // Buat Header secara dinamis
+                let headers = Object.keys(data[0]);
+                headers.forEach(h => {
+                    $('#headerRow').append(`<th>${h}</th>`);
+                });
+
+                // Isi Body
+                data.forEach(row => {
+                    let rowHtml = "<tr>";
+                    headers.forEach(h => {
+                        rowHtml += `<td>${row[h]}</td>`;
+                    });
+                    rowHtml += "</tr>";
+                    $('#bodyData').append(rowHtml);
+                });
+
+                // Aktifkan DataTables
+                $('#tabelData').DataTable();
+            }
+        } catch (error) {
+            console.error("Gagal mengambil data:", error);
+            alert("Gagal memuat data. Pastikan Web App sudah di-deploy dengan akses 'Anyone'.");
+        }
+    }
+
+    loadData();
+</script>
+
+</body>
+</html>
