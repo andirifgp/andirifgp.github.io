@@ -1,0 +1,99 @@
+/* Reset gaya dasar browser */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f4f9;
+}
+
+/* Styling Header dan Navbar */
+header {
+    background-color: #2c3e50;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+}
+
+.logo {
+    color: #ecf0f1;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 30px;
+}
+
+.nav-links a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+/* Efek saat mouse diarahkan ke menu */
+.nav-links a:hover {
+    color: #3498db;
+}
+
+/* Styling Hamburger Menu (disembunyikan di layar besar) */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: #ecf0f1;
+    transition: all 0.3s ease;
+}
+
+/* Tampilan Mobile (Layar di bawah 768px) */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Disembunyikan secara default di HP */
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        background-color: #34495e;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        padding: 20px 0;
+    }
+
+    /* Kelas active yang akan dimunculkan lewat JavaScript */
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+}
