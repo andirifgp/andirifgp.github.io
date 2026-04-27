@@ -97,3 +97,82 @@ header {
         display: flex;
     }
 }
+
+
+/* =========================================
+   Styling Section Dashboard (Hero)
+   ========================================= */
+
+.hero {
+    /* Menggunakan gambar background. Ganti URL di bawah dengan gambar Anda sendiri (misal: url('background.jpg')) */
+    /* linear-gradient digunakan untuk memberi efek gelap (overlay) agar teks lebih terbaca */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Membuat efek parallax sederhana saat di-scroll */
+    height: 100vh; /* Memenuhi tinggi layar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    padding: 0 20px;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Memanggil animasi agar konten muncul perlahan */
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Styling Foto Profil */
+.profile-pic {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%; /* Membuat foto menjadi bulat sempurna */
+    border: 5px solid #3498db; /* Garis tepi biru */
+    object-fit: cover; /* Memastikan foto tidak gepeng */
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Styling Teks Nama Kelompok */
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.hero-content h1 span {
+    color: #3498db; /* Mewarnai nama kelompok agar menonjol */
+}
+
+/* Styling Teks Deskripsi */
+.hero-content p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    line-height: 1.6;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+/* Animasi sederhana (Fade In) */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsif untuk layar HP */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    .profile-pic {
+        width: 130px;
+        height: 130px;
+    }
+    .hero-content p {
+        font-size: 1rem;
+    }
+}
